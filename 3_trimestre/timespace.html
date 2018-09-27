@@ -1,206 +1,297 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>Jquery Timespace</title>
+  <title>Jquery Timespace</title>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-		<script src="jquery.timespace.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+	<script src="jquery.timespace.js"></script>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Estilo próprio desse site -->
-    <link href="css/customizado.css" rel="stylesheet">
+  <!-- Estilo próprio desse site -->
+  <link href="css/customizado.css" rel="stylesheet">
 
-  	<link href="css/jquery.timespace.dark.css" rel="stylesheet">
+	<link href="css/jquery.timespace.dark.css" rel="stylesheet">
 
-    <style>
+  <style>
 
-  		h1, h2 {
-  			text-align: center;
+		h1, h2 {
+			text-align: center;
 
-  		}
+		}
 
-			h4, p {
-				text-align: justify;
-			}
+		h4, p {
+			text-align: justify;
+		}
 
-  		#timeline, #timelineClock {
-  			box-sizing: border-box;
-  			padding: 10px;
-  			width: 100%;
-  		}
+		hr {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: gray;
+		}
 
-  	</style>
+		#timeline, #timelineClock {
+			box-sizing: border-box;
+			padding: 10px;
+			width: 100%;
+		}
 
-  </head>
+	</style>
 
-  <body>
+</head>
 
-    <header>
-      <!-- Menu Fixo -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Início<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-          </form>
-        </div>
-      </nav>
-    </header>
+<body>
 
-    <main role="main" class="container">
-      <h1 class="mt-5 font-weight-bold">Plugin: Jquery Timespace</h1>
-      <h3 class="font-weight-bold">Descrição:</h3>
-			<h4><p>Timespace é um plugin jQuery para criar uma linha de tempo dinâmica, responsiva, horizontal, arrastável e sensível ao toque para exibir eventos personalizados de uma maneira deslizante. Clicando no slot do evento é possível ter maiores informações e detalhes sobre o acontecimento.</p></h4>
-			<hr>
+  <header>
+    <!-- Menu Fixo -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Início<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <main role="main" class="container">
+    <h1 class="mt-5 font-weight-bold">Plugin: Jquery Timespace</h1>
+    <h3 class="font-weight-bold">Descrição:</h3>
+		<h4><p>Timespace é um plugin jQuery para criar uma linha de tempo dinâmica, responsiva, horizontal, arrastável e sensível ao toque para exibir eventos personalizados de uma maneira deslizante. Clicando no slot do evento é possível ter maiores informações e detalhes sobre o acontecimento.</p></h4>
+		<hr>
+
+		<h2 class="font-weight-bold">Linha do Tempo: 24 Horas</h2>
+  	<div id="timelineClock"></div>
+  	<h2 class="font-weight-bold">Eventos da Linha do Tempo</h2>
+  	<div id="timeline"></div>
+  <script>
+  	$(function () {
+
+  		$('#timelineClock').timespace({
+
+  			// Set the time suffix function for displaying as '12 A.M.'
+  			timeSuffixFunction: s => ' ' + s[0].toUpperCase() + '.' + s[1].toUpperCase() + '.',
+  			selectedEvent: -1,
+  			data: {
+  				headings: [
+  					{start: 0, end: 6, title: 'Madrugada'},
+  					{start: 6, end: 12, title: 'Manhã'},
+  					{start: 12, end: 18, title: 'Tarde'},
+  					{start: 18, end: 24, title: 'Noite'},
+  				],
+  				events: [
+  					{start: 6.50, title: 'Café da Manhã', description: 'Comer frutas no café da manhã'},
+  					{start: 8, end: 10, title: 'Correr', description: 'Iniciar corrida para perder peso.'},
+  					{start: 12, title: 'Almoçar', description: 'Fazer uma refeição com alimentos saudáveis.'},
+  					{start: 14, title: 'Ligar para Trabalho'},
+  					{start: 14.75, title: 'Confirmar Reunião', description: 'Tratar de investimentos com os acionistas'},
+  					{start: 17, title: 'Encontro', description: 'Encontro com os amigos do trabalho'},
+  					{start: 20.75, title: 'Jantar'},
+  				]
+  			},
+
+  		});
+
+  		$('#timeline').timespace({
+
+  			timeType: 'date',
+  			useTimeSuffix: false,
+  			startTime: 500,
+  			endTime: 2050,
+  			markerIncrement: 50,
+  			data: {
+  				headings: [
+  					{start: 500, end: 2000, title: 'Trajetória do Sistema Capitalista'},
+  				],
+  				events: [
+  					{start: 1400, end: 1700, title: 'Fim do Feudalismo',
+							description: $('<p>Ocorre a desestruturação do sistema feudau iniciando assim o capitalismo</p>')},
+  					{start: 1500, end: 1780, title: 'Capitalismo Comercial',
+  						description: $('<p>Inicia-se com as Grandes Navegações e Expansões Marítimas Européias, '
+  							+ 'fase em que a burguesia mercante começa a buscar riquezas em outras terras fora da Europa. '
+  							+ 'Neste contexto, podemos identificar as seguintes características capitalistas: '
+  							+ '<p>Busca do lucro,</p>'
+								+ '<p>Uso de mão-de-obra assalariada,</p>'
+								+ '<p>Moeda substituindo o sistema de trocas,</p>'
+								+ '<p>Relações bancárias,</p>'
+								+ '<p>Fortalecimento do poder da burguesia,</p>'
+								+ '<p>Desigualdades sociais.</p>')},
+  					{start: 1780, end: 1870, title: 'Capitalismo Industrial',
+							description: 'Descrição Histórica:', callback: function () {
+
+  						this.container.find('.jqTimespaceDisplay section').append(
+  							'<p>O capitalismo Industrial surgiu devido ao surgimento do desenvolvimento digital e da tecnologia. '
+  							+ 'As classes sociais começaram a ser divididas a partir daí, como trabalhadores assalariados,'
+								+ '(trabalhadores), proprietários de terra arrendada (emprestada sob determinadas condições) e a burguesia industrial.</p>'
+  						);
+
+  					}},
+  					{start: 1870, end: 1929, title: 'Capitalismo Finaceiro',
+							description: $('<p>Esse período é marcado pelo início da prática monopolista que se caracteriza '
+								+ 'pelo amplo domínio de uma determinada empresa no mercado, isso quer dizer que não havia concorrência. '
+								+ 'Além disso, surgiu a prática de oligopólios que corresponde à junção de um pequeno número de empresas '
+								+ 'que se unem com o propósito de regular matérias-primas e preços para que outras empresas do ramo '
+								+ 'não atuem de forma ofensiva, colocando em risco os interesses desse grupo, dessa forma,'
+								+ 'força a concorrência a acompanhar os valores praticados.</p>')},
+  					{start: 1945, title: 'Fim da 2ª Guerra Mundial', noDetails: true},
+  					{start: 1945, end: 1973, title: 'Terceira Revolução Industrial',
+  						description: 'O período que compreende o fim da Segunda Guerra Mundial até a crise do petróleo em 1973 representou a época de ouro para ocapitalismo mundial, que cresceu sob a égide norte-americana.'
+  					},
+  				]
+  			},
+
+  		}, function () {
+
+  			// Edit the navigation amount
+  			this.navigateAmount = 500;
+
+  		});
+
+  	});
+  </script>
+	<hr>
 
 			 <h3 class="font-weight-bold">Exemplo do Código:</h3>
 			 <p></p>
 			 <pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>script</span><span style='color:#274796; '> </span><span style='color:#074726; '>src</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"jquery.timespace.js"</span><span style='color:#a65700; '>></span><span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>script</span><span style='color:#a65700; '>></span>
 
-<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"css/jquery.timespace.dark.css"</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"stylesheet"</span><span style='color:#a65700; '>></span>
+	<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"css/jquery.timespace.dark.css"</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"stylesheet"</span><span style='color:#a65700; '>></span>
 
-<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>style</span><span style='color:#a65700; '>></span>
+	<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>style</span><span style='color:#a65700; '>></span>
 
-<span style='color:#800000; font-weight:bold; '>h1</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>h2</span> <span style='color:#800080; '>{</span>
-  <span style='color:#bb7977; font-weight:bold; '>text-align</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>center</span><span style='color:#800080; '>;</span>
+	<span style='color:#800000; font-weight:bold; '>h1</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>h2</span> <span style='color:#800080; '>{</span>
+	<span style='color:#bb7977; font-weight:bold; '>text-align</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>center</span><span style='color:#800080; '>;</span>
 
-<span style='color:#800080; '>}</span>
+	<span style='color:#800080; '>}</span>
 
-<span style='color:#800000; font-weight:bold; '>h4</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>p</span> <span style='color:#800080; '>{</span>
-  <span style='color:#bb7977; font-weight:bold; '>text-align</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>justify</span><span style='color:#800080; '>;</span>
-<span style='color:#800080; '>}</span>
+	<span style='color:#800000; font-weight:bold; '>h4</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>p</span> <span style='color:#800080; '>{</span>
+	<span style='color:#bb7977; font-weight:bold; '>text-align</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>justify</span><span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
 
-<span style='color:#808030; '>#</span>timeline<span style='color:#808030; '>,</span> <span style='color:#808030; '>#</span>timelineClock <span style='color:#800080; '>{</span>
-  <span style='color:#bb7977; font-weight:bold; '>box-sizing</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>border-box</span><span style='color:#800080; '>;</span>
-  <span style='color:#bb7977; font-weight:bold; '>padding</span><span style='color:#808030; '>:</span> <span style='color:#008c00; '>10</span><span style='color:#006600; '>px</span><span style='color:#800080; '>;</span>
-  <span style='color:#bb7977; font-weight:bold; '>width</span><span style='color:#808030; '>:</span> <span style='color:#008c00; '>100</span><span style='color:#006600; '>%</span><span style='color:#800080; '>;</span>
-<span style='color:#800080; '>}</span>
+	<span style='color:#808030; '>#</span>timeline<span style='color:#808030; '>,</span> <span style='color:#808030; '>#</span>timelineClock <span style='color:#800080; '>{</span>
+	<span style='color:#bb7977; font-weight:bold; '>box-sizing</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>border-box</span><span style='color:#800080; '>;</span>
+	<span style='color:#bb7977; font-weight:bold; '>padding</span><span style='color:#808030; '>:</span> <span style='color:#008c00; '>10</span><span style='color:#006600; '>px</span><span style='color:#800080; '>;</span>
+	<span style='color:#bb7977; font-weight:bold; '>width</span><span style='color:#808030; '>:</span> <span style='color:#008c00; '>100</span><span style='color:#006600; '>%</span><span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
 
-<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>style</span><span style='color:#a65700; '>></span>
-</pre>
+	<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>style</span><span style='color:#a65700; '>></span>
+	</pre>
+	<hr>
 
-<hr>
+	<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;script&gt;</span>
+	$(<span style="color: #008800; font-weight: bold">function</span> () {
 
+	$(<span style="background-color: #fff0f0">&#39;#timelineClock&#39;</span>).timespace({
 
+		<span style="color: #888888">// Set the time suffix function for displaying as &#39;12 A.M.&#39;</span>
+		timeSuffixFunction<span style="color: #333333">:</span> s <span style="color: #333333">=&gt;</span> <span style="background-color: #fff0f0">&#39; &#39;</span> <span style="color: #333333">+</span> s[<span style="color: #0000DD; font-weight: bold">0</span>].toUpperCase() <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;.&#39;</span> <span style="color: #333333">+</span> s[<span style="color: #0000DD; font-weight: bold">1</span>].toUpperCase() <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;.&#39;</span>,
+		selectedEvent<span style="color: #333333">:</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>,
+		data<span style="color: #333333">:</span> {
+			headings<span style="color: #333333">:</span> [
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">0</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">6</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Madrugada&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">6</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">12</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Manhã&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">12</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">18</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Tarde&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">18</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">24</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Noite&#39;</span>},
+			],
+			events<span style="color: #333333">:</span> [
+				{start<span style="color: #333333">:</span> <span style="color: #6600EE; font-weight: bold">6.50</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Café da Manhã&#39;</span>, description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Comer frutas no café da manhã&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">8</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">10</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Correr&#39;</span>, description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Iniciar corrida para perder peso.&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">12</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Almoçar&#39;</span>, description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Fazer uma refeição com alimentos saudáveis.&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">14</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Ligar para Trabalho&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #6600EE; font-weight: bold">14.75</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Confirmar Reunião&#39;</span>, description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Tratar de investimentos com os acionistas&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">17</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Encontro&#39;</span>, description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Encontro com os amigos do trabalho&#39;</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #6600EE; font-weight: bold">20.75</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Jantar&#39;</span>},
+			]
+		},
 
-			<h2 class="font-weight-bold">Linha do Tempo: 24 Horas</h2>
-    	<div id="timelineClock"></div>
-    	<h2 class="font-weight-bold">Eventos da Linha do Tempo</h2>
-    	<div id="timeline"></div>
-    <script>
-    	$(function () {
+	});
 
-    		$('#timelineClock').timespace({
+	$(<span style="background-color: #fff0f0">&#39;#timeline&#39;</span>).timespace({
 
-    			// Set the time suffix function for displaying as '12 A.M.'
-    			timeSuffixFunction: s => ' ' + s[0].toUpperCase() + '.' + s[1].toUpperCase() + '.',
-    			selectedEvent: -1,
-    			data: {
-    				headings: [
-    					{start: 0, end: 6, title: 'Madrugada'},
-    					{start: 6, end: 12, title: 'Manhã'},
-    					{start: 12, end: 18, title: 'Tarde'},
-    					{start: 18, end: 24, title: 'Noite'},
-    				],
-    				events: [
-    					{start: 6.50, title: 'Café da Manhã', description: 'Comer frutas no café da manhã'},
-    					{start: 8, end: 10, title: 'Correr', description: 'Iniciar corrida para perder peso.'},
-    					{start: 12, title: 'Almoçar', description: 'Fazer uma refeição com alimentos saudáveis.'},
-    					{start: 14, title: 'Ligar para Trabalho'},
-    					{start: 14.75, title: 'Confirmar Reunião', description: 'Tratar de investimentos com os acionistas'},
-    					{start: 17, title: 'Encontro', description: 'Encontro com os amigos do trabalho'},
-    					{start: 20.75, title: 'Jantar'},
-    				]
-    			},
+		timeType<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;date&#39;</span>,
+		useTimeSuffix<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">false</span>,
+		startTime<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">500</span>,
+		endTime<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">2050</span>,
+		markerIncrement<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">50</span>,
+		data<span style="color: #333333">:</span> {
+			headings<span style="color: #333333">:</span> [
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">500</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">2000</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Trajetória do Sistema Capitalista&#39;</span>},
+			],
+			events<span style="color: #333333">:</span> [
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1400</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1700</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Fim do Feudalismo&#39;</span>,
+					description<span style="color: #333333">:</span> $(<span style="background-color: #fff0f0">&#39;&lt;p&gt;Ocorre a desestruturação do sistema feudau iniciando assim o capitalismo&lt;/p&gt;&#39;</span>)},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1500</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1780</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Capitalismo Comercial&#39;</span>,
+					description<span style="color: #333333">:</span> $(<span style="background-color: #fff0f0">&#39;&lt;p&gt;Inicia-se com as Grandes Navegações e Expansões Marítimas Européias, &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;fase em que a burguesia mercante começa a buscar riquezas em outras terras fora da Europa. &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;Neste contexto, podemos identificar as seguintes características capitalistas: &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;&lt;p&gt;Busca do lucro,&lt;/p&gt;&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;&lt;p&gt;Uso de mão-de-obra assalariada,&lt;/p&gt;&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;&lt;p&gt;Moeda substituindo o sistema de trocas,&lt;/p&gt;&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;&lt;p&gt;Relações bancárias,&lt;/p&gt;&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;&lt;p&gt;Fortalecimento do poder da burguesia,&lt;/p&gt;&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;&lt;p&gt;Desigualdades sociais.&lt;/p&gt;&#39;</span>)},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1780</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1870</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Capitalismo Industrial&#39;</span>,
+					description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Descrição Histórica:&#39;</span>, callback<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">function</span> () {
 
-    		});
+					<span style="color: #008800; font-weight: bold">this</span>.container.find(<span style="background-color: #fff0f0">&#39;.jqTimespaceDisplay section&#39;</span>).append(
+						<span style="background-color: #fff0f0">&#39;&lt;p&gt;O capitalismo Industrial surgiu devido ao surgimento do desenvolvimento digital e da tecnologia. &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;As classes sociais começaram a ser divididas a partir daí, como trabalhadores assalariados,&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;(trabalhadores), proprietários de terra arrendada (emprestada sob determinadas condições) e a burguesia industrial.&lt;/p&gt;&#39;</span>
+					);
 
-    		$('#timeline').timespace({
+				}},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1870</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1929</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Capitalismo Finaceiro&#39;</span>,
+					description<span style="color: #333333">:</span> $(<span style="background-color: #fff0f0">&#39;&lt;p&gt;Esse período é marcado pelo início da prática monopolista que se caracteriza &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;pelo amplo domínio de uma determinada empresa no mercado, isso quer dizer que não havia concorrência. &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;Além disso, surgiu a prática de oligopólios que corresponde à junção de um pequeno número de empresas &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;que se unem com o propósito de regular matérias-primas e preços para que outras empresas do ramo &#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;não atuem de forma ofensiva, colocando em risco os interesses desse grupo, dessa forma,&#39;</span>
+						<span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39;força a concorrência a acompanhar os valores praticados.&lt;/p&gt;&#39;</span>)},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1945</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Fim da 2ª Guerra Mundial&#39;</span>, noDetails<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">true</span>},
+				{start<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1945</span>, end<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1973</span>, title<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;Terceira Revolução Industrial&#39;</span>,
+					description<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;O período que compreende o fim da Segunda Guerra Mundial até a crise do petróleo em 1973 representou a época de ouro para ocapitalismo mundial, que cresceu sob a égide norte-americana.&#39;</span>
+				},
+			]
+		},
 
-    			timeType: 'date',
-    			useTimeSuffix: false,
-    			startTime: 500,
-    			endTime: 2050,
-    			markerIncrement: 50,
-    			data: {
-    				headings: [
-    					{start: 500, end: 2000, title: 'Trajetória do Sistema Capitalista'},
-    				],
-    				events: [
-    					{start: 1400, end: 1700, title: 'Fim do Feudalismo',
-								description: $('<p>Ocorre a desestruturação do sistema feudau iniciando assim o capitalismo</p>')},
-    					{start: 1500, end: 1780, title: 'Capitalismo Comercial',
-    						description: $('<p>Inicia-se com as Grandes Navegações e Expansões Marítimas Européias, '
-    							+ 'fase em que a burguesia mercante começa a buscar riquezas em outras terras fora da Europa. '
-    							+ 'Neste contexto, podemos identificar as seguintes características capitalistas: '
-    							+ '<p>Busca do lucro,</p>'
-									+ '<p>Uso de mão-de-obra assalariada,</p>'
-									+ '<p>Moeda substituindo o sistema de trocas,</p>'
-									+ '<p>Relações bancárias,</p>'
-									+ '<p>Fortalecimento do poder da burguesia,</p>'
-									+ '<p>Desigualdades sociais.</p>')},
-    					{start: 1780, end: 1870, title: 'Capitalismo Industrial',
-								description: 'Descrição Histórica:', callback: function () {
+	}, <span style="color: #008800; font-weight: bold">function</span> () {
 
-    						this.container.find('.jqTimespaceDisplay section').append(
-    							'<p>O capitalismo Industrial surgiu devido ao surgimento do desenvolvimento digital e da tecnologia. '
-    							+ 'As classes sociais começaram a ser divididas a partir daí, como trabalhadores assalariados,'
-									+ '(trabalhadores), proprietários de terra arrendada (emprestada sob determinadas condições) e a burguesia industrial.</p>'
-    						);
+		<span style="color: #888888">// Edit the navigation amount</span>
+		<span style="color: #008800; font-weight: bold">this</span>.navigateAmount <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">500</span>;
 
-    					}},
-    					{start: 1870, end: 1929, title: 'Capitalismo Finaceiro',
-								description: $('<p>Esse período é marcado pelo início da prática monopolista que se caracteriza '
-									+ 'pelo amplo domínio de uma determinada empresa no mercado, isso quer dizer que não havia concorrência. '
-									+ 'Além disso, surgiu a prática de oligopólios que corresponde à junção de um pequeno número de empresas '
-									+ 'que se unem com o propósito de regular matérias-primas e preços para que outras empresas do ramo '
-									+ 'não atuem de forma ofensiva, colocando em risco os interesses desse grupo, dessa forma,'
-									+ 'força a concorrência a acompanhar os valores praticados.</p>')},
-    					{start: 1945, title: 'Fim da 2ª Guerra Mundial', noDetails: true},
-    					{start: 1945, end: 1973, title: 'Terceira Revolução Industrial',
-    						description: 'O período que compreende o fim da Segunda Guerra Mundial até a crise do petróleo em 1973 representou a época de ouro para ocapitalismo mundial, que cresceu sob a égide norte-americana.'
-    					},
-    				]
-    			},
+	});
 
-    		}, function () {
+	});
+	<span style="color: #007700">&lt;/script&gt;</span>
+	</pre></div>
+	<br>
+    </p>
+  </main>
 
-    			// Edit the navigation amount
-    			this.navigateAmount = 500;
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Copyright © 2018 | Maycon Willian Alves da Silva</span>
+    </div>
+  </footer>
 
-    		});
-
-    	});
-    </script>
-
-      </p>
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted"></span>
-      </div>
-    </footer>
-
-  </body>
+</body>
 </html>

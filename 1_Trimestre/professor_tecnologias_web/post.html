@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blog : HTML</title>
+  <link href="https://fonts.googleapis.com/css?family=Pangolin|Roboto|Slabo+27px" rel="stylesheet">
+  <link rel="stylesheet" href="./css/estilo2.css">
+
+  <style>
+
+    body{
+      font-family:  "Times New Roman", Times, serif;;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <h2>Formulários</h2>
+
+  <p>
+    O HTML "form" elemento define um formulário que é usado para coletar a
+    entrada do usuário.
+  </p>
+
+  <p>Um formulário HTML contém elementos de formulário.
+    Elementos de formulário são diferentes tipos de elementos de entrada, como
+    campos de texto, caixas de seleção, botões de rádio, botões de envio, e muito mais.
+  </p>
+
+  <p>
+    O "input" elemento é o mais importante elemento de formulário. Ele pode ser
+    exibido de várias maneiras, dependendo do tipo de atributo.
+  </p>
+
+  <p>Algumas exemplos são:</p>
+
+  <table border="10">
+    <tr>
+      <th>Tipo</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td>Define um campo de entrada de texto de uma linha</td>
+    </tr>
+    <tr>
+      <td>Radio</td>
+      <td>Define um botão de rádio (para a seleção de uma das muitas escolhas)</td>
+    </tr>
+    <tr>
+      <td>Submit</td>
+      <td>Define um botão de envio (para enviar o formulário)</td>
+    </tr>
+  </table><br>
+  <hr>
+  <h2> Exemplo de Rádio</h2>
+  <h3>Motivos para estudar programação:</h3>
+
+     <form class="itens1"action="" method="get">
+
+       <h3>1) Assinale a alternativa mais adequada:</h3>
+
+       <input type="radio" name="q1" value="a" id="q1a">
+       <label for="q1a">a) Para viajar a Trabalho.</label><br><br>
+
+       <input type="radio" name="q1" value="b" id="q1b">
+       <label for="q1b">b) Para ser um nerd.</label><br><br>
+
+       <input type="radio" name="q1" value="c" id="q1c">
+       <label for="q1c">c) Para ficar rico.</label><br><br>
+
+       <input type="radio" name="q1" value="d" id="q1d">
+       <label for="q1d">d) Mais uma graduação.</label><br><br>
+
+  <input class="botao" type="submit" name="" value="Enviar"><br>
+  </form>
+
+  <hr>
+
+  <form class="itens" action="" method="post">
+    <label for="">Nome:</label><br>
+    <input type="text" name="nome" value="" placeholder="Digite seu nome"><br><br>
+
+
+    <label for="">Email:</label><br>
+    <input type="email" name="email" value="" placeholder="Diite um e-mail válido"><br><br>
+
+    <label for="">Data de Nascimento:</label><br>
+    <input type="date" name="date" value=""><br><br>
+
+    <label for="">Site:</label><br>
+    <input type="url" name="site" value="" placeholder="Digite seu site"><br><br>
+
+    <label for="">Mensagem:</label><br>
+    <textarea name="comentario" rows="8" cols="80"></textarea><br><br>
+
+    <input class="botao"type="submit" name="" value="Comentar"><br><br>
+
+  </form>
+
+  <hr>
+
+
+</body>
+</html>

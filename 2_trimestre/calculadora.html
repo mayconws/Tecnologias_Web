@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calculadora</title>
+  <script src="js/jquery-3.3.1.js"> </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("#soma").click(function(event) {
+
+      var num1 = $("#num1").val();
+
+      var num2 = $("#num2").val();
+
+      num1 = parseFloat(num1);
+
+      num2 = parseFloat(num2);
+
+      var soma = num1 + num2
+      alert("A Soma dos números é: " +soma);
+    });
+
+    $("#sub").click(function(event) {
+
+      var num1 = $("#num1").val();
+
+      var num2 = $("#num2").val();
+
+      num1 = parseFloat(num1);
+
+      num2 = parseFloat(num2);
+
+      var subt = num1 - num2
+      alert("A Subtração dos números é: " +subt);
+    });
+
+    $("#mult").click(function(event) {
+
+      var num1 = $("#num1").val();
+
+      var num2 = $("#num2").val();
+
+      num1 = parseFloat(num1);
+
+      num2 = parseFloat(num2);
+
+      var mult = num1 * num2
+        alert("A Multiplicação dos números é: " +mult);
+    });
+
+    $("#div").click(function(event) {
+
+      var num1 = $("#num1").val();
+
+      var num2 = $("#num2").val();
+
+      num1 = parseFloat(num1);
+
+      num2 = parseFloat(num2);
+
+      var subt = num1 / num2
+        alert("A Divisão dos números é: " +div);
+    });
+  });
+  </script>
+
+</head>
+<body>
+
+  <form action="" method="">
+
+    <label>Calculadora</label><br><br>
+
+    <input type="number" name="num1" id="num1"/><br><br>
+
+    <input type="number" name="num2" id="num2"/><br><br>
+
+    <button type="button" id="soma">Somar</button>
+
+    <button type="button" id="sub">Subtrair</button>
+
+    <button type="button" id="mult">Multiplicar</button>
+
+    <button type="button" id="div">Dividir</button>
+
+  </form>
+
+</body>
+</html>

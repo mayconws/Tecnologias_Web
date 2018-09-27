@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Exercício - 2</title>
+  <script src="js/jquery-3.3.1.js"> </script>
+  <script>
+  $(document).ready(function(){
+    $("#apagada").mouseenter(function(){
+      $("#apagada").attr("src", "http://i.stack.imgur.com/ybxlO.jpg")
+    });
+    $(document).ready(function(){
+      $("#apagada").mouseleave(function(){
+        $("#apagada").attr("src", "http://i.stack.imgur.com/b983w.jpg")
+      });
+    });
+  });
+
+</script>
+</head>
+<body>
+
+  <h3>Exercíco 2 - Galeria de Imagens</h3>
+
+  <img width="300" height="300"src="https://img.elo7.com.br/product/original/139A35A/painel-futebol-g-frete-gratis-painel-de-festa-infantil.jpg" id="imggrande"><br>
+
+  <img width="50" height="50"src="https://img.elo7.com.br/product/original/139A35A/painel-futebol-g-frete-gratis-painel-de-festa-infantil.jpg" id="img1">
+
+  <img width="50" height="50"src="https://www.ricaperrone.com.br/wp-content/uploads/2017/07/Brasil_conquista_primeiro_ouro_oli%CC%81mpico_no_futebol_1039247-20082016-_mg_3424.jpg" id="img2">
+
+  <img width="50" height="50"src="http://amatra10.org.br/wp-content/uploads/2016/12/futebol-brasileiro.png" id="img3">
+
+  <img width="50" height="50"src="http://jornaldenoticiasmococa.com.br/wp-content/uploads/2018/02/Officials-Are-Investigating-Artificial-Turf-For-Cancer-Risk-925x578.jpg" id="img4">
+
+</body>
+</html>

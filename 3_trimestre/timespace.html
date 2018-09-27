@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+    <title>Jquery Timespace</title>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+		<script src="jquery.timespace.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilo próprio desse site -->
+    <link href="css/customizado.css" rel="stylesheet">
+
+  	<link href="css/jquery.timespace.dark.css" rel="stylesheet">
+
+    <style>
+
+  		h1, h2 {
+  			text-align: center;
+
+  		}
+
+			h4, p {
+				text-align: justify;
+			}
+
+  		#timeline, #timelineClock {
+  			box-sizing: border-box;
+  			padding: 10px;
+  			width: 100%;
+  		}
+
+  	</style>
+
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Menu Fixo -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Início<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <h1 class="mt-5 font-weight-bold">Plugin: Jquery Timespace</h1>
+      <h3 class="font-weight-bold">Descrição:</h3>
+			<h4><p>Timespace é um plugin jQuery para criar uma linha de tempo dinâmica, responsiva, horizontal, arrastável e sensível ao toque para exibir eventos personalizados de uma maneira deslizante. Clicando no slot do evento é possível ter maiores informações e detalhes sobre o acontecimento.</p></h4>
+			<hr>
+
+			 <h3 class="font-weight-bold">Exemplo do Código:</h3>
+			 <p></p>
+			 <pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>script</span><span style='color:#274796; '> </span><span style='color:#074726; '>src</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"jquery.timespace.js"</span><span style='color:#a65700; '>></span><span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>script</span><span style='color:#a65700; '>></span>
+
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"css/jquery.timespace.dark.css"</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"stylesheet"</span><span style='color:#a65700; '>></span>
+
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>style</span><span style='color:#a65700; '>></span>
+
+<span style='color:#800000; font-weight:bold; '>h1</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>h2</span> <span style='color:#800080; '>{</span>
+  <span style='color:#bb7977; font-weight:bold; '>text-align</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>center</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800080; '>}</span>
+
+<span style='color:#800000; font-weight:bold; '>h4</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>p</span> <span style='color:#800080; '>{</span>
+  <span style='color:#bb7977; font-weight:bold; '>text-align</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>justify</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span>
+
+<span style='color:#808030; '>#</span>timeline<span style='color:#808030; '>,</span> <span style='color:#808030; '>#</span>timelineClock <span style='color:#800080; '>{</span>
+  <span style='color:#bb7977; font-weight:bold; '>box-sizing</span><span style='color:#808030; '>:</span> <span style='color:#074726; '>border-box</span><span style='color:#800080; '>;</span>
+  <span style='color:#bb7977; font-weight:bold; '>padding</span><span style='color:#808030; '>:</span> <span style='color:#008c00; '>10</span><span style='color:#006600; '>px</span><span style='color:#800080; '>;</span>
+  <span style='color:#bb7977; font-weight:bold; '>width</span><span style='color:#808030; '>:</span> <span style='color:#008c00; '>100</span><span style='color:#006600; '>%</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span>
+
+<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>style</span><span style='color:#a65700; '>></span>
+</pre>
+
+<hr>
+
+
+
+			<h2 class="font-weight-bold">Linha do Tempo: 24 Horas</h2>
+    	<div id="timelineClock"></div>
+    	<h2 class="font-weight-bold">Eventos da Linha do Tempo</h2>
+    	<div id="timeline"></div>
+    <script>
+    	$(function () {
+
+    		$('#timelineClock').timespace({
+
+    			// Set the time suffix function for displaying as '12 A.M.'
+    			timeSuffixFunction: s => ' ' + s[0].toUpperCase() + '.' + s[1].toUpperCase() + '.',
+    			selectedEvent: -1,
+    			data: {
+    				headings: [
+    					{start: 0, end: 6, title: 'Madrugada'},
+    					{start: 6, end: 12, title: 'Manhã'},
+    					{start: 12, end: 18, title: 'Tarde'},
+    					{start: 18, end: 24, title: 'Noite'},
+    				],
+    				events: [
+    					{start: 6.50, title: 'Café da Manhã', description: 'Comer frutas no café da manhã'},
+    					{start: 8, end: 10, title: 'Correr', description: 'Iniciar corrida para perder peso.'},
+    					{start: 12, title: 'Almoçar', description: 'Fazer uma refeição com alimentos saudáveis.'},
+    					{start: 14, title: 'Ligar para Trabalho'},
+    					{start: 14.75, title: 'Confirmar Reunião', description: 'Tratar de investimentos com os acionistas'},
+    					{start: 17, title: 'Encontro', description: 'Encontro com os amigos do trabalho'},
+    					{start: 20.75, title: 'Jantar'},
+    				]
+    			},
+
+    		});
+
+    		$('#timeline').timespace({
+
+    			timeType: 'date',
+    			useTimeSuffix: false,
+    			startTime: 500,
+    			endTime: 2050,
+    			markerIncrement: 50,
+    			data: {
+    				headings: [
+    					{start: 500, end: 2000, title: 'Trajetória do Sistema Capitalista'},
+    				],
+    				events: [
+    					{start: 1400, end: 1700, title: 'Fim do Feudalismo',
+								description: $('<p>Ocorre a desestruturação do sistema feudau iniciando assim o capitalismo</p>')},
+    					{start: 1500, end: 1780, title: 'Capitalismo Comercial',
+    						description: $('<p>Inicia-se com as Grandes Navegações e Expansões Marítimas Européias, '
+    							+ 'fase em que a burguesia mercante começa a buscar riquezas em outras terras fora da Europa. '
+    							+ 'Neste contexto, podemos identificar as seguintes características capitalistas: '
+    							+ '<p>Busca do lucro,</p>'
+									+ '<p>Uso de mão-de-obra assalariada,</p>'
+									+ '<p>Moeda substituindo o sistema de trocas,</p>'
+									+ '<p>Relações bancárias,</p>'
+									+ '<p>Fortalecimento do poder da burguesia,</p>'
+									+ '<p>Desigualdades sociais.</p>')},
+    					{start: 1780, end: 1870, title: 'Capitalismo Industrial',
+								description: 'Descrição Histórica:', callback: function () {
+
+    						this.container.find('.jqTimespaceDisplay section').append(
+    							'<p>O capitalismo Industrial surgiu devido ao surgimento do desenvolvimento digital e da tecnologia. '
+    							+ 'As classes sociais começaram a ser divididas a partir daí, como trabalhadores assalariados,'
+									+ '(trabalhadores), proprietários de terra arrendada (emprestada sob determinadas condições) e a burguesia industrial.</p>'
+    						);
+
+    					}},
+    					{start: 1870, end: 1929, title: 'Capitalismo Finaceiro',
+								description: $('<p>Esse período é marcado pelo início da prática monopolista que se caracteriza '
+									+ 'pelo amplo domínio de uma determinada empresa no mercado, isso quer dizer que não havia concorrência. '
+									+ 'Além disso, surgiu a prática de oligopólios que corresponde à junção de um pequeno número de empresas '
+									+ 'que se unem com o propósito de regular matérias-primas e preços para que outras empresas do ramo '
+									+ 'não atuem de forma ofensiva, colocando em risco os interesses desse grupo, dessa forma,'
+									+ 'força a concorrência a acompanhar os valores praticados.</p>')},
+    					{start: 1945, title: 'Fim da 2ª Guerra Mundial', noDetails: true},
+    					{start: 1945, end: 1973, title: 'Terceira Revolução Industrial',
+    						description: 'O período que compreende o fim da Segunda Guerra Mundial até a crise do petróleo em 1973 representou a época de ouro para ocapitalismo mundial, que cresceu sob a égide norte-americana.'
+    					},
+    				]
+    			},
+
+    		}, function () {
+
+    			// Edit the navigation amount
+    			this.navigateAmount = 500;
+
+    		});
+
+    	});
+    </script>
+
+      </p>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted"></span>
+      </div>
+    </footer>
+
+  </body>
+</html>

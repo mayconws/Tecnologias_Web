@@ -1,0 +1,23 @@
+--<!DOCTYPE html>
+<html>
+<head>
+  <script src="js/jquery-3.3.1.js"> </script>
+  <script>
+  $(document).ready(function(){
+    $("#apagada").mouseenter(function(){
+      $("#apagada").attr("src", "http://i.stack.imgur.com/ybxlO.jpg")
+    });
+    $(document).ready(function(){
+      $("#apagada").mouseleave(function(){
+        $("#apagada").attr("src", "http://i.stack.imgur.com/b983w.jpg")
+      });
+    });
+  });
+</script>
+</head>
+<body>
+
+  <img src="http://i.stack.imgur.com/b983w.jpg" id="apagada"></p>
+
+</body>
+</html>

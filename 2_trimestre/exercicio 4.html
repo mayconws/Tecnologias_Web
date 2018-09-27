@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Exercício 4 - Lampada Quebrada</title>
+  <script src="js/jquery-3.3.1.js"> </script>
+  <script>
+  var quebrada = false;
+
+  function mudaLampada(tipo){
+    if (tipo== 1) {
+      arquivo ="http://i.stack.imgur.com/b983w.jpg";}
+      if (tipo== 2) {
+        arquivo ="http://i.stack.imgur.com/ybxlO.jpg";}
+        if (tipo == 3){
+          arquivo = "http://i.stack.imgur.com/MRjsF.jpg";
+        }
+
+        if (!quebrada){
+          document.getElementById("luz").src= arquivo;
+
+          if(tipo == 3){
+            quebrada = true;
+          }}}
+          </script>
+</head>
+<body>
+  <h3> Exercício 4 <br>
+    <img src="http://i.stack.imgur.com/b983w.jpg" id="luz" onmousemove="mudaLampada(2)"
+    onmouseleave="mudaLampada(1)" onclick="mudaLampada(3)"/>
+</body>
+</html>

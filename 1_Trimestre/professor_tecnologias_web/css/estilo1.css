@@ -1,0 +1,150 @@
+@charset "UTF-8";
+/*Formatação de Texto e Backgorund*/
+
+body {
+  background-image: url("http://nuwallpaperhd.info/wp-content/uploads/2018/01/266864-white-background-1920x1200-for-lockscreen.jpg");
+}
+p {
+  text-align: justify;
+  text-indent;
+
+}
+
+h4 {
+  color: Gray11;
+}
+
+
+h2 {
+  color: DarkBlue;
+}
+
+h1 {
+  text-decoration: underline;
+  color: DarkCyan;;
+}
+
+/*Formatação de Imagens e Links*/
+
+figure.foto-legenda {
+  position: relative;
+  border: 10px solid white;
+  box-shadow: 1px 1px 4px black;
+}
+
+figure.foto-legenda img {
+  width: 100%;
+  height: 100%;
+  }
+
+figure.foto-legenda figcaption {
+  opacity: 0;
+  position: absolute;
+  top:0px;
+  background-color: rgba (0,0,0.4);
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  transition: opacity 1s;
+}
+
+figure.foto-legenda:hover figcaption {
+  opacity: 1;
+}
+
+/* Formatação Menu */
+
+nav#menu {
+  display: block;
+}
+
+nav#menu ul {
+  list-style: none;
+  text-transform: uppercase;
+  position: absolute;
+  top: -20px;
+  left: 600px;
+}
+
+nav#menu li:hover {
+  background-color: #606060;
+}
+
+nav#menu h2 {
+  display: none;
+}
+
+nav#menu a {
+  color: #000000;
+  text-decoration: none;
+}
+
+nav#menu a:hover {
+  color: #ffffff;
+}
+
+nav#menu li {
+  display: inline-block;
+  background-color: #dcdcdc;
+  padding: 10px;
+  margin: 2px;
+  transition: background-color 1s;
+}
+
+table#tabela {
+  border: 1px solid #606060;
+  border-spacing: 0px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+table#tabela td.ce {
+  color: #ffffff;
+  background-color: #606060;
+  font-weight: bolder;
+}
+
+table#tabela td.cd {
+  background-color: #cecece;
+  font-weight: bolder;
+}
+
+table#tabela caption {
+  color: DarkBlue;;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+table#tabela td {
+  border: 1px solid #606060;
+  padding: 20px
+}
+
+.botao {
+  padding: 10px 20px;
+  background-color: DimGray;
+  border: solid 1px #003366;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 10px;
+  transition: background-color 1s;
+}
+
+.botao:hover{
+  background-color: #0073e6;
+}
+
+.formulario {
+font-size: 18px;
+font-style: normal;
+font-weight: bolder;
+color: Gray11;
+}
+
+.curso {
+  font-size: 20px;
+  font-weight: bolder;
+  font-style: italic;
+}
